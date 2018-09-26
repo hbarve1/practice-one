@@ -1,0 +1,92 @@
+version: "3"
+
+services:
+  # nginx:
+  #   image: nginx:1.15.3-alpine
+  #   container_name: nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+
+  admin-client:
+    # image: node:8.12.0-alpine
+    container_name: admin-client
+    build:
+      context: ./admin-client
+      # dockerFile: Dockerfile
+    # command: 
+    volumes:
+      - ./admin-client:/home/node/app
+      - /home/node/app/node_modules
+    ports:
+      - "9000:4200"
+      - "49153:49153"
+
+  # admin-api:
+  #   # image: node:8.12.0-alpine
+  #   container_name: admin-api
+  #   build:
+  #     context: ./admin-api
+  #   # command: npm run start
+  #   volumes:
+  #     - ./admin-api:/home/node/app
+  #     - /home/node/app/node_modules
+  #   ports:
+  #     - "9001:80"
+
+  # chatbot:
+  #   # image: node:8.12.0-alpine
+  #   container_name: chatbot
+  #   build:
+  #     context: ./chatbot
+  #     # command: npm run start
+  #   volumes:
+  #     - ./chatbot:/app
+  #     - /app/node_modules
+  #   ports:
+  #     - "9002:80"
+
+  # redis:
+  #   image: redis:4.0.11-alpine
+  #   container_name: redis
+  #   # hostname: redis
+  #   ports:
+  #     - "6379:6379"
+
+  # # Redis GUI is not working right now
+  # # redis-gui:
+  # #   container_name: redis-gui
+  # #   hostname: redis-gui
+  # #   image: tenstartups/redis-commander
+  # #   command: --redis-host redis
+  # #   links:
+  # #     - redis:redis
+  # #   ports:
+  # #     - "8081:8081"
+
+  # mysql:
+  #   image: mysql:8.0.12
+  #   container_name: mysql
+  #   ports: 
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: admin
+  #     MYSQL_DATABASE: test-db
+  #     MYSQL_USER: admin
+  #     MYSQL_PASSWORD: admin
+  #   volumes:
+  #     - ./data/mysql:/var/lib/mysql
+  #   networks:
+  #     - default
+
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin:latest
+  #   container_name: phpmyadmin
+  #   links: 
+  #     - mysql:db
+  #   ports:
+  #     - "8000:80"
+  #   environment:
+  #     MYSQL_USER: admin
+  #     MYSQL_PASSWORD: admin
+  #     MYSQL_ROOT_PASSWORD: admin

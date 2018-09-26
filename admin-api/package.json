@@ -1,0 +1,21 @@
+{
+  "name": "admin-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -L --watch 'src/**/*.ts' --exec ts-node src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "10.11.0",
+    "nodemon": "1.18.4",
+    "ts-node": "7.0.1",
+    "typescript": "3.0.3"
+  },
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
